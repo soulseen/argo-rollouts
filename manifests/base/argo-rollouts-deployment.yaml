@@ -18,7 +18,7 @@ spec:
       serviceAccountName: argo-rollouts
       containers:
       - name: argo-rollouts
-        image: argoproj/argo-rollouts:latest
+        image: harbor.shopeemobile.com/devops-sz/rollouts:ImageTag
         imagePullPolicy: Always
       securityContext:
         runAsNonRoot: true

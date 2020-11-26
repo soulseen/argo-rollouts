@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2beta10
+kind: Config
+metadata:
+  name: argo-rollouts
+#build:
+#  artifacts:
+#  - image: docker.io/zhuxiaoyang/argo-rollouts
+#    docker:
+#      dockerfile: Dockerfile
+#  tagPolicy:
+#    gitCommit:
+#      variant: Tags
+#  local:
+#    push: true
+deploy:
+  statusCheckDeadlineSeconds: 600
+  kustomize:
+    paths:
+    - manifests/cluster-install
+    defaultNamespace: argo-rollouts

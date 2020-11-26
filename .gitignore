@@ -9,6 +9,5 @@ debug.test
 coverage.out
 coverage.html
 site/
-vendor/
 # generated
 docs/generated

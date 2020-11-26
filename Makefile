@@ -6,8 +6,9 @@ TEST_TARGET ?= ./...
 
 VERSION=$(shell cat ${CURRENT_DIR}/VERSION)
 BUILD_DATE=$(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
-GIT_COMMIT=$(shell git rev-parse HEAD)
-GIT_TAG=$(shell if [ -z "`git status --porcelain`" ]; then git describe --exact-match --tags HEAD 2>/dev/null; fi)
+GIT_COMMIT=$(shell git rev-parse --short HEAD)
+#GIT_TAG=$(shell if [ -z "`git status --porcelain`" ]; then git describe --exact-match --tags HEAD 2>/dev/null; fi)
+GIT_TAG=$(shell git describe --tags `git rev-list --tags --max-count=1`)
 GIT_TREE_STATE=$(shell if [ -z "`git status --porcelain`" ]; then echo "clean" ; else echo "dirty"; fi)
 GIT_REMOTE_REPO=upstream
 # build development images
@@ -26,11 +27,12 @@ override LDFLAGS += \
 
 # docker image publishing options
 DOCKER_PUSH=false
-IMAGE_TAG=latest
-ifneq (${GIT_TAG},)
-IMAGE_TAG=${GIT_TAG}
+IMAGE_TAG ?= ${GIT_COMMIT}
+IMAGE_PREFIX ?= harbor.shopeemobile.com/devops-sz/
+RELEASE_TAG ?= latest
+
+
 LDFLAGS += -X ${PACKAGE}.gitTag=${GIT_TAG}
-endif
 ifneq (${IMAGE_NAMESPACE},)
 override LDFLAGS += -X ${PACKAGE}/install.imageNamespace=${IMAGE_NAMESPACE}
 endif
@@ -42,10 +44,6 @@ ifeq (${DOCKER_PUSH},true)
 ifndef IMAGE_NAMESPACE
 $(error IMAGE_NAMESPACE must be set to push images (e.g. IMAGE_NAMESPACE=argoproj))
 endif
-endif
-
-ifdef IMAGE_NAMESPACE
-IMAGE_PREFIX=${IMAGE_NAMESPACE}/
 endif
 
 .PHONY: all
@@ -82,15 +80,23 @@ builder-image:
 	docker build  -t $(IMAGE_PREFIX)argo-rollouts-ci-builder:$(IMAGE_TAG) --target builder .
 		@if [ "$(DOCKER_PUSH)" = "true" ] ; then docker push $(IMAGE_PREFIX)argo-rollouts:$(IMAGE_TAG) ; fi
 
-.PHONY: image
-image:
-ifeq ($(DEV_IMAGE), true)
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -i -ldflags '${LDFLAGS}' -o ${DIST_DIR}/rollouts-controller-linux-amd64 ./cmd/rollouts-controller
-	docker build -t $(IMAGE_PREFIX)argo-rollouts:$(IMAGE_TAG) -f Dockerfile.dev .
-else
-	docker build -t $(IMAGE_PREFIX)argo-rollouts:$(IMAGE_TAG)  .
-endif
-	@if [ "$(DOCKER_PUSH)" = "true" ] ; then docker push $(IMAGE_PREFIX)argo-rollouts:$(IMAGE_TAG) ; fi
+.PHONY: image-build
+image-build:
+	docker build -t $(IMAGE_PREFIX)rollouts:$(IMAGE_TAG) -f Dockerfile .
+
+.PHONY: image-push
+image-push:
+	docker push $(IMAGE_PREFIX)rollouts:$(IMAGE_TAG)
+
+.PHONY: image-release-tag
+image-release-tag:
+	docker tag $(IMAGE_PREFIX)rollouts:$(IMAGE_TAG) $(IMAGE_PREFIX)rollouts:$(RELEASE_TAG)
+
+.PHONY: image-release-push
+image-release-push:
+	docker push $(IMAGE_PREFIX)rollouts:$(RELEASE_TAG)
+
+
 
 .PHONY: lint
 lint:
