@@ -12,7 +12,6 @@ pipeline {
     }
 
     environment {
-        KUBECONFIG_CLUSTER_CTL_LIVE = credentials('80d84097-1b3f-4ca7-a00b-bdebf1bba74a')
         KUBECONFIG_CLUSTER_SG2_TEST = credentials('56f51c07-a31a-45ca-a3d5-28ea2de6290e')
         NOTIFY_URL = 'https://openapi.seatalk.io/webhook/group/yrJzQ6HfR1Wxuyaak4C5qw'
         NOTIFY_EMAILS = '["xiaoyang.zhu@shopee.com"]'
@@ -123,12 +122,25 @@ pipeline {
             }
             // Now deploy to sg2-test cluster only.
             steps {
-                gitlabBuilds(builds: ["Deploy"]) {
-                    sh "sed -i.bak 's#ImageTag#$RELEASE_TAG#' ./config/samples/git-secret/*.yaml"
-                    sh "kubectl create ns argo-rollouts --dry-run -o yaml | kubectl apply -f -"
-                    gitlabCommitStatus(name: "Deploy") {
-                        sh 'skaffold deploy'
+                script {
+                    try {
+                        gitlabBuilds(builds: ["Deploy"]) {
+                            sh "sed -i.bak 's#ImageTag#$RELEASE_TAG#' ./config/samples/git-secret/*.yaml"
+
+                            sh """curl -X POST $env.NOTIFY_URL -d '{"tag":"text","text":{"content":"\\nrollout controller is deploying.","mentioned_email_list":$env.NOTIFY_EMAILS,"at_all":false}}'"""
+
+                            sh "kubectl create ns argo-rollouts --dry-run -o yaml | kubectl apply -f -"
+                            gitlabCommitStatus(name: "Deploy") {
+                                sh 'skaffold deploy'
+                            }
+
+                            sh """curl -X POST $env.NOTIFY_URL -d '{"tag":"text","text":{"content":"\\nrollout controller deployed","mentioned_email_list":$env.NOTIFY_EMAILS,"at_all":false}}'"""
+                        }
+                    } catch (e) {
+                        sh """curl -X POST $env.NOTIFY_URL -d '{"tag":"text","text":{"content":"\\nrollout controller deployed failed","mentioned_email_list":$env.NOTIFY_EMAILS,"at_all":false}}'"""
                     }
+
+
                 }
             }
         }
