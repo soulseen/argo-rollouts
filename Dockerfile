@@ -54,7 +54,7 @@ RUN make ${MAKE_TARGET}
 ####################################################################################################
 # Final image
 ####################################################################################################
-FROM scratch
+FROM ubuntu:18.04
 
 COPY --from=argo-rollouts-build /go/src/github.com/argoproj/argo-rollouts/dist/rollouts-controller /bin/
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/

@@ -1,0 +1,563 @@
+go test -timeout 15m -v -count 1 --tags e2e -p 1 --short ./test/e2e 
+=== RUN   TestAnalysisSuite
+time="2020-11-24T18:06:12+08:00" level=info msg="analysistemplate.argoproj.io/web-background created\n"
+time="2020-11-24T18:06:13+08:00" level=info msg="analysistemplate.argoproj.io/sleep-job created\n"
+=== RUN   TestAnalysisSuite/TestBlueGreenAbortAndUpdate
+time="2020-11-24T18:06:13+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenAbortAndUpdate"
+time="2020-11-24T18:06:13+08:00" level=info msg="service/bluegreen-abort-and-update-active created\n" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:13+08:00" level=info msg="service/bluegreen-abort-and-update-preview created\n" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:13+08:00" level=info msg="rollout.argoproj.io/bluegreen-abort-and-update created\n" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:13+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:15+08:00" level=info msg="Condition 'status=Healthy' met after 1s" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:15+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 0' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:15+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:20+08:00" level=info msg="Condition 'status=Degraded' met after 4s" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:20+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 1' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:20+08:00" level=info msg="Expectation: active revision == '1' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:20+08:00" level=info msg="Expectation: preview revision == '2' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:20+08:00" level=info msg="Waiting for condition: status=Paused" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:23+08:00" level=info msg="Condition 'status=Paused' met after 2s" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:23+08:00" level=info msg="Pod expectation 'revision:1 pod count == 1' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:23+08:00" level=info msg="Pod expectation 'revision:2 pod count == 0' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:23+08:00" level=info msg="Pod expectation 'revision:3 pod count == 1' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:23+08:00" level=info msg="Expectation: active revision == '1' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:23+08:00" level=info msg="Expectation: preview revision == '3' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:23+08:00" level=info msg="Promoted rollout" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:23+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:28+08:00" level=info msg="Condition 'status=Healthy' met after 5s" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:28+08:00" level=info msg="Pod expectation 'revision:1 pod count == 1' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:28+08:00" level=info msg="Pod expectation 'revision:2 pod count == 0' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:28+08:00" level=info msg="Pod expectation 'revision:3 pod count == 1' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:28+08:00" level=info msg="Expectation: active revision == '3' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:28+08:00" level=info msg="Expectation: preview revision == '3' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:28+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 2' met" rollout=bluegreen-abort-and-update
+time="2020-11-24T18:06:28+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenAbortAndUpdate"
+=== RUN   TestAnalysisSuite/TestBlueGreenAnalysis
+time="2020-11-24T18:06:28+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenAnalysis"
+time="2020-11-24T18:06:28+08:00" level=info msg="service/bluegreen-analysis-active created\n" rollout=bluegreen-analysis
+time="2020-11-24T18:06:29+08:00" level=info msg="service/bluegreen-analysis-preview created\n" rollout=bluegreen-analysis
+time="2020-11-24T18:06:29+08:00" level=info msg="rollout.argoproj.io/bluegreen-analysis created\n" rollout=bluegreen-analysis
+time="2020-11-24T18:06:29+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen-analysis
+time="2020-11-24T18:06:31+08:00" level=info msg="Condition 'status=Healthy' met after 2s" rollout=bluegreen-analysis
+time="2020-11-24T18:06:31+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 0' met" rollout=bluegreen-analysis
+time="2020-11-24T18:06:31+08:00" level=info msg="Waiting for condition: status=Progressing" rollout=bluegreen-analysis
+time="2020-11-24T18:06:31+08:00" level=info msg="Condition 'status=Progressing' met after 0s" rollout=bluegreen-analysis
+time="2020-11-24T18:06:31+08:00" level=info msg="Waiting for condition: status=Paused" rollout=bluegreen-analysis
+time="2020-11-24T18:06:34+08:00" level=info msg="Condition 'status=Paused' met after 3s" rollout=bluegreen-analysis
+time="2020-11-24T18:06:34+08:00" level=info msg="Expectation: active revision == '1' met" rollout=bluegreen-analysis
+time="2020-11-24T18:06:34+08:00" level=info msg="Expectation: preview revision == '2' met" rollout=bluegreen-analysis
+time="2020-11-24T18:06:36+08:00" level=info msg="Promoted rollout" rollout=bluegreen-analysis
+time="2020-11-24T18:06:36+08:00" level=info msg="Waiting for condition: active revision=2" rollout=bluegreen-analysis
+    when.go:279: timeout after 1m0s waiting for condition active revision=2
+Name:            bluegreen-analysis
+Namespace:       default
+Status:          [0m॥[0m Paused
+Message:         BlueGreenPause
+Strategy:        BlueGreen
+Images:          nginx:1.19-alpine ([32mactive[0m, [94mpreview[0m, [32mstable[0m)
+Replicas:
+  Desired:       1
+  Current:       2
+  Updated:       1
+  Ready:         1
+  Available:     1
+
+NAME                                                         KIND         STATUS        AGE  INFO
+⟳ bluegreen-analysis                                         Rollout      [0m॥[0m Paused      67s  
+├──# revision:2                                                                              
+│  ├──⧉ [94mbluegreen-analysis-754987cd65[0m                        ReplicaSet   [32m✔[0m Healthy     65s  [94mpreview[0m
+│  │  └──□ bluegreen-analysis-754987cd65-2j7bl               Pod          [32m✔[0m Running     65s  ready:1/1
+│  └──α [0mbluegreen-analysis-754987cd65-2-pre[0m                  AnalysisRun  [32m✔[0m Successful  62s  [32m✔[0m 1
+│     └──⊞ [0mbac44b1c-6ccb-48bc-bc8e-e001d2d77507.sleep-job.1[0m  Job          [32m✔[0m Successful  62s  
+└──# revision:1                                                                              
+   └──⧉ [32m[32mbluegreen-analysis-6cc94d85f[0m[0m                         ReplicaSet   [32m✔[0m Healthy     67s  [32mstable[0m,[32mactive[0m
+      └──□ bluegreen-analysis-6cc94d85f-vqprk                Pod          [32m✔[0m Running     67s  ready:1/1
+time="2020-11-24T18:07:36+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenAnalysis"
+=== RUN   TestAnalysisSuite/TestBlueGreenKitchenSink
+time="2020-11-24T18:07:37+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenKitchenSink"
+time="2020-11-24T18:07:37+08:00" level=info msg="service/bluegreen-kitchensink-active created\n" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:37+08:00" level=info msg="service/bluegreen-kitchensink-preview created\n" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:37+08:00" level=info msg="rollout.argoproj.io/bluegreen-kitchensink created\n" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:37+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:40+08:00" level=info msg="Condition 'status=Healthy' met after 2s" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:40+08:00" level=info msg="Waiting for condition: status=Paused" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:42+08:00" level=info msg="Condition 'status=Paused' met after 2s" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:42+08:00" level=info msg="Expectation: active revision == '1' met" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:42+08:00" level=info msg="Expectation: preview revision == '2' met" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:42+08:00" level=info msg="Pod expectation 'revision:1 pod count == 2' met" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:42+08:00" level=info msg="Pod expectation 'revision:2 pod count == 1' met" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:42+08:00" level=info msg="Replica count expectation met (desired:2, current:3, updated:1, ready:2, available:2)" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:42+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 1' met" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:42+08:00" level=info msg="Waiting for condition: active revision=2" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:48+08:00" level=info msg="Condition 'active revision=2' met after 6s" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:48+08:00" level=info msg="Pod expectation 'revision:2 pod count == 2' met" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:48+08:00" level=info msg="Pod expectation 'revision:1 pod count == 2' met" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:48+08:00" level=info msg="Replica count expectation met (desired:2, current:4, updated:2, ready:2, available:2)" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:49+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 2' met" rollout=bluegreen-kitchensink
+time="2020-11-24T18:07:49+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=bluegreen-kitchensink
+time="2020-11-24T18:08:00+08:00" level=info msg="Condition 'status=Degraded' met after 11s" rollout=bluegreen-kitchensink
+time="2020-11-24T18:08:01+08:00" level=info msg="Expectation: active revision == '1' met" rollout=bluegreen-kitchensink
+time="2020-11-24T18:08:01+08:00" level=info msg="Expectation: preview revision == '2' met" rollout=bluegreen-kitchensink
+time="2020-11-24T18:08:01+08:00" level=info msg="Pod expectation 'revision:2 pod count == 2' met" rollout=bluegreen-kitchensink
+time="2020-11-24T18:08:01+08:00" level=info msg="Pod expectation 'revision:1 pod count == 2' met" rollout=bluegreen-kitchensink
+time="2020-11-24T18:08:01+08:00" level=info msg="Replica count expectation met (desired:2, current:4, updated:2, ready:2, available:2)" rollout=bluegreen-kitchensink
+time="2020-11-24T18:08:01+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenKitchenSink"
+=== RUN   TestAnalysisSuite/TestBlueGreenPostPromotionFail
+time="2020-11-24T18:08:01+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenPostPromotionFail"
+time="2020-11-24T18:08:01+08:00" level=info msg="service/post-promotion-fail-active created\n" rollout=post-promotion-fail
+time="2020-11-24T18:08:01+08:00" level=info msg="service/post-promotion-fail-preview created\n" rollout=post-promotion-fail
+time="2020-11-24T18:08:02+08:00" level=info msg="rollout.argoproj.io/post-promotion-fail created\n" rollout=post-promotion-fail
+time="2020-11-24T18:08:02+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=post-promotion-fail
+time="2020-11-24T18:08:04+08:00" level=info msg="Condition 'status=Healthy' met after 2s" rollout=post-promotion-fail
+time="2020-11-24T18:08:04+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 0' met" rollout=post-promotion-fail
+time="2020-11-24T18:08:04+08:00" level=info msg="Waiting for condition: status=Progressing" rollout=post-promotion-fail
+time="2020-11-24T18:08:04+08:00" level=info msg="Condition 'status=Progressing' met after 0s" rollout=post-promotion-fail
+time="2020-11-24T18:08:04+08:00" level=info msg="Waiting for condition: status=Paused" rollout=post-promotion-fail
+time="2020-11-24T18:08:07+08:00" level=info msg="Condition 'status=Paused' met after 2s" rollout=post-promotion-fail
+time="2020-11-24T18:08:07+08:00" level=info msg="Expectation: active revision == '1' met" rollout=post-promotion-fail
+time="2020-11-24T18:08:07+08:00" level=info msg="Expectation: preview revision == '2' met" rollout=post-promotion-fail
+time="2020-11-24T18:08:07+08:00" level=info msg="Promoted rollout" rollout=post-promotion-fail
+time="2020-11-24T18:08:09+08:00" level=info msg="Expectation: active revision == '2' met" rollout=post-promotion-fail
+time="2020-11-24T18:08:09+08:00" level=info msg="Expectation: preview revision == '2' met" rollout=post-promotion-fail
+time="2020-11-24T18:08:09+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=post-promotion-fail
+time="2020-11-24T18:08:15+08:00" level=info msg="Condition 'status=Degraded' met after 6s" rollout=post-promotion-fail
+time="2020-11-24T18:08:15+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 1' met" rollout=post-promotion-fail
+time="2020-11-24T18:08:15+08:00" level=info msg="Expectation: active revision == '1' met" rollout=post-promotion-fail
+time="2020-11-24T18:08:15+08:00" level=info msg="Expectation: preview revision == '2' met" rollout=post-promotion-fail
+time="2020-11-24T18:08:15+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenPostPromotionFail"
+=== RUN   TestAnalysisSuite/TestBlueGreenPrePromotionFail
+time="2020-11-24T18:08:15+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenPrePromotionFail"
+time="2020-11-24T18:08:16+08:00" level=info msg="service/pre-promotion-fail-active created\n" rollout=pre-promotion-fail
+time="2020-11-24T18:08:16+08:00" level=info msg="service/pre-promotion-fail-preview created\n" rollout=pre-promotion-fail
+time="2020-11-24T18:08:16+08:00" level=info msg="rollout.argoproj.io/pre-promotion-fail created\n" rollout=pre-promotion-fail
+time="2020-11-24T18:08:16+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=pre-promotion-fail
+time="2020-11-24T18:08:18+08:00" level=info msg="Condition 'status=Healthy' met after 2s" rollout=pre-promotion-fail
+time="2020-11-24T18:08:18+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 0' met" rollout=pre-promotion-fail
+time="2020-11-24T18:08:18+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=pre-promotion-fail
+time="2020-11-24T18:08:27+08:00" level=info msg="Condition 'status=Degraded' met after 8s" rollout=pre-promotion-fail
+time="2020-11-24T18:08:27+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 1' met" rollout=pre-promotion-fail
+time="2020-11-24T18:08:27+08:00" level=info msg="Expectation: active revision == '1' met" rollout=pre-promotion-fail
+time="2020-11-24T18:08:27+08:00" level=info msg="Expectation: preview revision == '2' met" rollout=pre-promotion-fail
+time="2020-11-24T18:08:27+08:00" level=info msg="Patched rollout: {\"apiVersion\":\"argoproj.io/v1alpha1\",\"kind\":\"Rollout\",\"metadata\":{\"name\":\"pre-promotion-fail\"},\"spec\":{\"strategy\":{\"blueGreen\":{\"prePromotionAnalysis\":{\"args\":[{\"name\":\"exit-code\",\"value\":\"0\"},{\"name\":\"duration\",\"value\":\"5\"}],\"templates\":[{\"templateName\":\"sleep-job\"}]}}}}}" rollout=pre-promotion-fail
+time="2020-11-24T18:08:27+08:00" level=info msg="Retried rollout" rollout=pre-promotion-fail
+time="2020-11-24T18:08:27+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=pre-promotion-fail
+time="2020-11-24T18:08:38+08:00" level=info msg="Condition 'status=Healthy' met after 11s" rollout=pre-promotion-fail
+time="2020-11-24T18:08:38+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 2' met" rollout=pre-promotion-fail
+time="2020-11-24T18:08:38+08:00" level=info msg="Expectation: active revision == '2' met" rollout=pre-promotion-fail
+time="2020-11-24T18:08:38+08:00" level=info msg="Expectation: preview revision == '2' met" rollout=pre-promotion-fail
+time="2020-11-24T18:08:38+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenPrePromotionFail"
+=== RUN   TestAnalysisSuite/TestCanaryBackgroundAnalysis
+time="2020-11-24T18:08:38+08:00" level=info msg="Deleting e2e-test-name=TestCanaryBackgroundAnalysis"
+time="2020-11-24T18:08:39+08:00" level=info msg="rollout.argoproj.io/rollout-background-analysis created\n" rollout=rollout-background-analysis
+time="2020-11-24T18:08:39+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=rollout-background-analysis
+time="2020-11-24T18:08:40+08:00" level=info msg="Condition 'status=Healthy' met after 1s" rollout=rollout-background-analysis
+time="2020-11-24T18:08:40+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 0' met" rollout=rollout-background-analysis
+time="2020-11-24T18:08:40+08:00" level=info msg="Waiting for condition: status=Paused" rollout=rollout-background-analysis
+time="2020-11-24T18:08:45+08:00" level=info msg="Condition 'status=Paused' met after 4s" rollout=rollout-background-analysis
+time="2020-11-24T18:08:45+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 1' met" rollout=rollout-background-analysis
+time="2020-11-24T18:08:45+08:00" level=info msg="Background AnalysisRun expectation 'background analysis phase == Running' met" rollout=rollout-background-analysis
+time="2020-11-24T18:08:45+08:00" level=info msg="Promoted rollout" rollout=rollout-background-analysis
+time="2020-11-24T18:08:45+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=rollout-background-analysis
+time="2020-11-24T18:08:45+08:00" level=info msg="Condition 'status=Healthy' met after 0s" rollout=rollout-background-analysis
+time="2020-11-24T18:08:45+08:00" level=info msg="Waiting for AnalysisRun rollout-background-analysis-658c5f8645-2 condition: phase=Successful" rollout=rollout-background-analysis
+time="2020-11-24T18:08:45+08:00" level=info msg="Condition 'phase=Successful' met after 0s" rollout=rollout-background-analysis
+time="2020-11-24T18:08:45+08:00" level=info msg="Deleting e2e-test-name=TestCanaryBackgroundAnalysis"
+=== RUN   TestAnalysisSuite/TestCanaryInlineAnalysis
+time="2020-11-24T18:08:45+08:00" level=info msg="Deleting e2e-test-name=TestCanaryInlineAnalysis"
+time="2020-11-24T18:08:45+08:00" level=info msg="rollout.argoproj.io/rollout-inline-analysis created\n" rollout=rollout-inline-analysis
+time="2020-11-24T18:08:45+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=rollout-inline-analysis
+time="2020-11-24T18:08:48+08:00" level=info msg="Condition 'status=Healthy' met after 2s" rollout=rollout-inline-analysis
+time="2020-11-24T18:08:48+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 0' met" rollout=rollout-inline-analysis
+time="2020-11-24T18:08:48+08:00" level=info msg="Waiting for condition: status=Paused" rollout=rollout-inline-analysis
+time="2020-11-24T18:08:52+08:00" level=info msg="Condition 'status=Paused' met after 4s" rollout=rollout-inline-analysis
+time="2020-11-24T18:08:52+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 1' met" rollout=rollout-inline-analysis
+time="2020-11-24T18:08:52+08:00" level=info msg="Waiting for AnalysisRun rollout-inline-analysis-646bf9f849-2-1 condition: phase=Successful" rollout=rollout-inline-analysis
+time="2020-11-24T18:08:52+08:00" level=info msg="Condition 'phase=Successful' met after 0s" rollout=rollout-inline-analysis
+time="2020-11-24T18:08:52+08:00" level=info msg="Promoted rollout" rollout=rollout-inline-analysis
+time="2020-11-24T18:08:52+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=rollout-inline-analysis
+time="2020-11-24T18:08:57+08:00" level=info msg="Condition 'status=Healthy' met after 4s" rollout=rollout-inline-analysis
+time="2020-11-24T18:08:57+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 3' met" rollout=rollout-inline-analysis
+time="2020-11-24T18:08:57+08:00" level=info msg="Deleting e2e-test-name=TestCanaryInlineAnalysis"
+time="2020-11-24T18:08:57+08:00" level=info msg="Deleting e2e-test-name"
+--- FAIL: TestAnalysisSuite (166.17s)
+    --- PASS: TestAnalysisSuite/TestBlueGreenAbortAndUpdate (15.48s)
+    --- FAIL: TestAnalysisSuite/TestBlueGreenAnalysis (68.57s)
+    --- PASS: TestAnalysisSuite/TestBlueGreenKitchenSink (24.15s)
+    --- PASS: TestAnalysisSuite/TestBlueGreenPostPromotionFail (14.66s)
+    --- PASS: TestAnalysisSuite/TestBlueGreenPrePromotionFail (23.02s)
+    --- PASS: TestAnalysisSuite/TestCanaryBackgroundAnalysis (6.41s)
+    --- PASS: TestAnalysisSuite/TestCanaryInlineAnalysis (12.61s)
+=== RUN   TestCanarySuite
+time="2020-11-24T18:08:58+08:00" level=info msg="analysistemplate.argoproj.io/sleep-job created\n"
+=== RUN   TestCanarySuite/TestCanarySetCanaryScale
+time="2020-11-24T18:08:58+08:00" level=info msg="Deleting e2e-test-name=TestCanarySetCanaryScale"
+=== PAUSE TestCanarySuite/TestCanarySetCanaryScale
+=== RUN   TestCanarySuite/TestEphemeralMetadata
+time="2020-11-24T18:08:58+08:00" level=info msg="Deleting e2e-test-name=TestEphemeralMetadata"
+time="2020-11-24T18:08:58+08:00" level=info msg="rollout.argoproj.io/ephemeral-metadata created\n" rollout=ephemeral-metadata
+time="2020-11-24T18:08:58+08:00" level=info msg="Waiting for condition: status.replicas=2" rollout=ephemeral-metadata
+time="2020-11-24T18:08:58+08:00" level=info msg="Condition 'status.replicas=2' met after 0s" rollout=ephemeral-metadata
+time="2020-11-24T18:08:58+08:00" level=info msg="Pod expectation 'all pods have stable metadata' met" rollout=ephemeral-metadata
+time="2020-11-24T18:08:58+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=ephemeral-metadata
+time="2020-11-24T18:09:01+08:00" level=info msg="Condition 'status=Healthy' met after 2s" rollout=ephemeral-metadata
+time="2020-11-24T18:09:01+08:00" level=info msg="Waiting for condition: status=Paused" rollout=ephemeral-metadata
+time="2020-11-24T18:09:03+08:00" level=info msg="Condition 'status=Paused' met after 2s" rollout=ephemeral-metadata
+time="2020-11-24T18:09:03+08:00" level=info msg="Pod expectation 'revision 2 has canary metadata' met" rollout=ephemeral-metadata
+time="2020-11-24T18:09:03+08:00" level=info msg="Pod expectation 'revision 1 has stable metadata' met" rollout=ephemeral-metadata
+time="2020-11-24T18:09:03+08:00" level=info msg="Patched rollout: {\"spec\":{\"strategy\":{\"canary\":{\"canaryMetadata\":{\"labels\":{\"role\":null,\"role2\":\"canary2\"}}}}}}" rollout=ephemeral-metadata
+time="2020-11-24T18:09:04+08:00" level=info msg="Pod expectation 'revision 2 has canary metadata2' met" rollout=ephemeral-metadata
+time="2020-11-24T18:09:05+08:00" level=info msg="Promoted rollout" rollout=ephemeral-metadata
+time="2020-11-24T18:09:05+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=ephemeral-metadata
+time="2020-11-24T18:09:07+08:00" level=info msg="Condition 'status=Healthy' met after 2s" rollout=ephemeral-metadata
+time="2020-11-24T18:09:07+08:00" level=info msg="Pod expectation 'revision 2 has stable metadata' met" rollout=ephemeral-metadata
+time="2020-11-24T18:09:07+08:00" level=info msg="Patched rollout: {\"spec\":{\"strategy\":{\"canary\":{\"stableMetadata\":{\"labels\":{\"role\":null,\"role2\":\"stable2\"}}}}}}" rollout=ephemeral-metadata
+time="2020-11-24T18:09:08+08:00" level=info msg="Pod expectation 'revision 2 has stable metadata2' met" rollout=ephemeral-metadata
+time="2020-11-24T18:09:08+08:00" level=info msg="Deleting e2e-test-name=TestEphemeralMetadata"
+=== RUN   TestCanarySuite/TestReduceWeightAndHonorMaxUnavailable
+time="2020-11-24T18:09:08+08:00" level=info msg="Deleting e2e-test-name=TestReduceWeightAndHonorMaxUnavailable"
+time="2020-11-24T18:09:08+08:00" level=info msg="rollout.argoproj.io/reduceweight-maxunavailable created\n" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:09:08+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:09:16+08:00" level=info msg="Condition 'status=Healthy' met after 8s" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:09:16+08:00" level=info msg="Waiting for condition: status=Paused" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:09:31+08:00" level=info msg="Condition 'status=Paused' met after 14s" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:09:31+08:00" level=info msg="Pod expectation 'canary pod count == 3' met" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:09:31+08:00" level=info msg="Pod expectation 'stable pod count == 0' met" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:09:31+08:00" level=info msg="Promoted rollout" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:09:33+08:00" level=info msg="Pod expectation 'canary pod count == 3' met" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:09:33+08:00" level=info msg="Pod expectation 'stable pod count == 2' met" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:09:33+08:00" level=info msg="Waiting for condition: status.currentStepIndex=3" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:09:46+08:00" level=info msg="Condition 'status.currentStepIndex=3' met after 12s" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:09:46+08:00" level=info msg="Promoted rollout" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:09:46+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:10:01+08:00" level=info msg="Condition 'status=Degraded' met after 15s" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:10:03+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 1' met" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:10:03+08:00" level=info msg="Pod expectation 'canary pod count == 3' met" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:10:03+08:00" level=info msg="Pod expectation 'stable pod count == 2' met" rollout=reduceweight-maxunavailable
+time="2020-11-24T18:10:03+08:00" level=info msg="Deleting e2e-test-name=TestReduceWeightAndHonorMaxUnavailable"
+=== RUN   TestCanarySuite/TestRolloutScalingDuringUpdate
+time="2020-11-24T18:10:03+08:00" level=info msg="Deleting e2e-test-name=TestRolloutScalingDuringUpdate"
+time="2020-11-24T18:10:04+08:00" level=info msg="rollout.argoproj.io/updatescaling created\n" rollout=updatescaling
+time="2020-11-24T18:10:04+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=updatescaling
+time="2020-11-24T18:10:08+08:00" level=info msg="Condition 'status=Healthy' met after 3s" rollout=updatescaling
+time="2020-11-24T18:10:08+08:00" level=info msg="Patched rollout: {\"spec\":{\"template\":{\"spec\":{\"containers\":[{\"command\":[\"/bad-command\"],\"name\":\"updatescaling\"}]}}}}" rollout=updatescaling
+time="2020-11-24T18:10:08+08:00" level=info msg="Waiting for condition: status.replicas=6" rollout=updatescaling
+time="2020-11-24T18:10:08+08:00" level=info msg="Condition 'status.replicas=6' met after 0s" rollout=updatescaling
+time="2020-11-24T18:10:08+08:00" level=info msg="Pod expectation 'canary pod count == 2' met" rollout=updatescaling
+time="2020-11-24T18:10:08+08:00" level=info msg="Pod expectation 'stable pod count == 4' met" rollout=updatescaling
+time="2020-11-24T18:10:08+08:00" level=info msg="Scaled rollout to 8" rollout=updatescaling
+time="2020-11-24T18:10:08+08:00" level=info msg="Waiting for condition: status.replicas=10" rollout=updatescaling
+time="2020-11-24T18:10:08+08:00" level=info msg="Condition 'status.replicas=10' met after 0s" rollout=updatescaling
+time="2020-11-24T18:10:08+08:00" level=info msg="Pod expectation 'canary pod count == 6' met" rollout=updatescaling
+time="2020-11-24T18:10:08+08:00" level=info msg="Pod expectation 'stable pod count == 4' met" rollout=updatescaling
+time="2020-11-24T18:10:08+08:00" level=info msg="Scaled rollout to 4" rollout=updatescaling
+time="2020-11-24T18:10:08+08:00" level=info msg="Deleting e2e-test-name=TestRolloutScalingDuringUpdate"
+time="2020-11-24T18:10:08+08:00" level=info msg="Deleting e2e-test-name"
+=== CONT  TestCanarySuite/TestCanarySetCanaryScale
+time="2020-11-24T18:10:09+08:00" level=info msg="service/set-canary-scale-canary created\n" rollout=set-canary-scale
+time="2020-11-24T18:10:09+08:00" level=info msg="service/set-canary-scale-stable created\n" rollout=set-canary-scale
+time="2020-11-24T18:10:09+08:00" level=info msg="ingress.networking.k8s.io/set-canary-scale-ingress unchanged\n" rollout=set-canary-scale
+time="2020-11-24T18:10:09+08:00" level=info msg="rollout.argoproj.io/set-canary-scale created\n" rollout=set-canary-scale
+time="2020-11-24T18:10:09+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=set-canary-scale
+time="2020-11-24T18:10:24+08:00" level=info msg="Condition 'status=Healthy' met after 15s" rollout=set-canary-scale
+time="2020-11-24T18:10:24+08:00" level=info msg="Waiting for condition: status=Paused" rollout=set-canary-scale
+time="2020-11-24T18:10:25+08:00" level=info msg="Condition 'status=Paused' met after 0s" rollout=set-canary-scale
+time="2020-11-24T18:10:25+08:00" level=info msg="Pod expectation 'canary pod count == 0' met" rollout=set-canary-scale
+time="2020-11-24T18:10:25+08:00" level=info msg="Pod expectation 'stable pod count == 4' met" rollout=set-canary-scale
+time="2020-11-24T18:10:25+08:00" level=info msg="Promoted rollout" rollout=set-canary-scale
+time="2020-11-24T18:10:25+08:00" level=info msg="Waiting for condition: status.currentStepIndex=2" rollout=set-canary-scale
+time="2020-11-24T18:10:29+08:00" level=info msg="Condition 'status.currentStepIndex=2' met after 3s" rollout=set-canary-scale
+time="2020-11-24T18:10:29+08:00" level=info msg="Pod expectation 'canary pod count == 1' met" rollout=set-canary-scale
+time="2020-11-24T18:10:29+08:00" level=info msg="Pod expectation 'stable pod count == 4' met" rollout=set-canary-scale
+time="2020-11-24T18:10:29+08:00" level=info msg="Promoted rollout" rollout=set-canary-scale
+time="2020-11-24T18:10:29+08:00" level=info msg="Waiting for condition: status.currentStepIndex=4" rollout=set-canary-scale
+time="2020-11-24T18:10:32+08:00" level=info msg="Condition 'status.currentStepIndex=4' met after 2s" rollout=set-canary-scale
+time="2020-11-24T18:10:32+08:00" level=info msg="Pod expectation 'canary pod count == 1' met" rollout=set-canary-scale
+time="2020-11-24T18:10:32+08:00" level=info msg="Pod expectation 'stable pod count == 4' met" rollout=set-canary-scale
+time="2020-11-24T18:10:32+08:00" level=info msg="Promoted rollout" rollout=set-canary-scale
+time="2020-11-24T18:10:32+08:00" level=info msg="Waiting for condition: status.currentStepIndex=6" rollout=set-canary-scale
+time="2020-11-24T18:10:36+08:00" level=info msg="Condition 'status.currentStepIndex=6' met after 4s" rollout=set-canary-scale
+time="2020-11-24T18:10:36+08:00" level=info msg="Pod expectation 'canary pod count == 3' met" rollout=set-canary-scale
+time="2020-11-24T18:10:36+08:00" level=info msg="Pod expectation 'stable pod count == 4' met" rollout=set-canary-scale
+time="2020-11-24T18:10:36+08:00" level=info msg="Promoted rollout" rollout=set-canary-scale
+time="2020-11-24T18:10:36+08:00" level=info msg="Waiting for condition: status.currentStepIndex=8" rollout=set-canary-scale
+time="2020-11-24T18:10:39+08:00" level=info msg="Condition 'status.currentStepIndex=8' met after 2s" rollout=set-canary-scale
+time="2020-11-24T18:10:39+08:00" level=info msg="Pod expectation 'canary pod count == 2' met" rollout=set-canary-scale
+time="2020-11-24T18:10:39+08:00" level=info msg="Pod expectation 'stable pod count == 4' met" rollout=set-canary-scale
+time="2020-11-24T18:10:39+08:00" level=info msg="Promoted rollout" rollout=set-canary-scale
+time="2020-11-24T18:10:39+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=set-canary-scale
+time="2020-11-24T18:10:44+08:00" level=info msg="Condition 'status=Healthy' met after 4s" rollout=set-canary-scale
+time="2020-11-24T18:10:44+08:00" level=info msg="Pod expectation 'canary pod count == 4' met" rollout=set-canary-scale
+time="2020-11-24T18:10:44+08:00" level=info msg="Pod expectation 'stable pod count == 4' met" rollout=set-canary-scale
+time="2020-11-24T18:10:44+08:00" level=info msg="Deleting e2e-test-name=TestCanarySetCanaryScale"
+--- PASS: TestCanarySuite (70.76s)
+    --- PASS: TestCanarySuite/TestEphemeralMetadata (10.09s)
+    --- PASS: TestCanarySuite/TestReduceWeightAndHonorMaxUnavailable (55.35s)
+    --- PASS: TestCanarySuite/TestRolloutScalingDuringUpdate (4.75s)
+    --- PASS: TestCanarySuite/TestCanarySetCanaryScale (35.54s)
+=== RUN   TestExperimentSuite
+=== RUN   TestExperimentSuite/TestRolloutWithExperiment
+time="2020-11-24T18:10:44+08:00" level=info msg="Deleting e2e-test-name=TestRolloutWithExperiment"
+=== PAUSE TestExperimentSuite/TestRolloutWithExperiment
+time="2020-11-24T18:10:44+08:00" level=info msg="Deleting e2e-test-name"
+=== CONT  TestExperimentSuite/TestRolloutWithExperiment
+time="2020-11-24T18:10:44+08:00" level=info msg="rollout.argoproj.io/rollout-experiment created\n" rollout=rollout-experiment
+time="2020-11-24T18:10:44+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=rollout-experiment
+time="2020-11-24T18:10:50+08:00" level=info msg="Condition 'status=Healthy' met after 5s" rollout=rollout-experiment
+time="2020-11-24T18:10:50+08:00" level=info msg="Waiting for condition: status=Paused" rollout=rollout-experiment
+time="2020-11-24T18:11:05+08:00" level=info msg="Condition 'status=Paused' met after 14s" rollout=rollout-experiment
+time="2020-11-24T18:11:05+08:00" level=info msg="Promoted rollout" rollout=rollout-experiment
+time="2020-11-24T18:11:05+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=rollout-experiment
+time="2020-11-24T18:11:07+08:00" level=info msg="Condition 'status=Healthy' met after 2s" rollout=rollout-experiment
+time="2020-11-24T18:11:07+08:00" level=info msg="Deleting e2e-test-name=TestRolloutWithExperiment"
+--- PASS: TestExperimentSuite (0.20s)
+    --- PASS: TestExperimentSuite/TestRolloutWithExperiment (23.25s)
+=== RUN   TestFunctionalSuite
+time="2020-11-24T18:11:07+08:00" level=info msg="analysistemplate.argoproj.io/sleep-job created\n"
+=== RUN   TestFunctionalSuite/TestBlueGreenPreviewReplicaCount
+time="2020-11-24T18:11:07+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenPreviewReplicaCount"
+time="2020-11-24T18:11:08+08:00" level=info msg="service/bluegreen-preview-replicas-active created\n" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:08+08:00" level=info msg="service/bluegreen-preview-replicas-preview created\n" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:08+08:00" level=info msg="rollout.argoproj.io/bluegreen-preview-replicas created\n" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:08+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:10+08:00" level=info msg="Condition 'status=Healthy' met after 2s" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:10+08:00" level=info msg="Waiting for condition: status=Paused" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:12+08:00" level=info msg="Condition 'status=Paused' met after 2s" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:12+08:00" level=info msg="Pod expectation 'revision:2 pod count == 1' met" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:12+08:00" level=info msg="Pod expectation 'revision:1 pod count == 2' met" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:12+08:00" level=info msg="Replica count expectation met (desired:2, current:3, updated:1, ready:2, available:2)" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:12+08:00" level=info msg="Promoted rollout" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:12+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:16+08:00" level=info msg="Condition 'status=Healthy' met after 3s" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:16+08:00" level=info msg="Replica count expectation met (desired:2, current:4, updated:2, ready:2, available:2)" rollout=bluegreen-preview-replicas
+time="2020-11-24T18:11:16+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenPreviewReplicaCount"
+=== RUN   TestFunctionalSuite/TestBlueGreenPromoteFull
+time="2020-11-24T18:11:16+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenPromoteFull"
+time="2020-11-24T18:11:17+08:00" level=info msg="service/bluegreen-promote-full-active created\n" rollout=bluegreen-promote-full
+time="2020-11-24T18:11:17+08:00" level=info msg="rollout.argoproj.io/bluegreen-promote-full created\n" rollout=bluegreen-promote-full
+time="2020-11-24T18:11:17+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen-promote-full
+time="2020-11-24T18:11:23+08:00" level=info msg="Condition 'status=Healthy' met after 6s" rollout=bluegreen-promote-full
+time="2020-11-24T18:11:24+08:00" level=info msg="Promoted rollout fully" rollout=bluegreen-promote-full
+time="2020-11-24T18:11:24+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen-promote-full
+time="2020-11-24T18:11:27+08:00" level=info msg="Condition 'status=Healthy' met after 2s" rollout=bluegreen-promote-full
+time="2020-11-24T18:11:27+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 0' met" rollout=bluegreen-promote-full
+time="2020-11-24T18:11:27+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenPromoteFull"
+=== RUN   TestFunctionalSuite/TestBlueGreenScaleDownDelay
+time="2020-11-24T18:11:27+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenScaleDownDelay"
+time="2020-11-24T18:11:28+08:00" level=info msg="service/bluegreen-scaledowndelay-active created\n" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:28+08:00" level=info msg="rollout.argoproj.io/bluegreen-scaledowndelay created\n" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:28+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:36+08:00" level=info msg="Condition 'status=Healthy' met after 8s" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:36+08:00" level=info msg="Waiting for condition: status=Progressing" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:36+08:00" level=info msg="Condition 'status=Progressing' met after 0s" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:36+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:39+08:00" level=info msg="Condition 'status=Healthy' met after 2s" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:39+08:00" level=info msg="Pod expectation 'revision:2 pod count == 1' met" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:39+08:00" level=info msg="Pod expectation 'revision:1 pod count == 1' met" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:39+08:00" level=info msg="Replica count expectation met (desired:1, current:2, updated:1, ready:1, available:1)" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:39+08:00" level=info msg="Waiting for condition: status=Progressing" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:39+08:00" level=info msg="Condition 'status=Progressing' met after 0s" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:39+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:41+08:00" level=info msg="Condition 'status=Healthy' met after 1s" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:41+08:00" level=info msg="Waiting for condition: status=Progressing" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:41+08:00" level=info msg="Condition 'status=Progressing' met after 0s" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:41+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:43+08:00" level=info msg="Condition 'status=Healthy' met after 2s" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:44+08:00" level=info msg="Pod expectation 'revision:4 pod count == 1' met" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:44+08:00" level=info msg="Pod expectation 'revision:3 pod count == 1' met" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:44+08:00" level=info msg="Pod expectation 'revision:2 pod count == 1' met" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:44+08:00" level=info msg="Pod expectation 'revision:1 pod count == 0' met" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:44+08:00" level=info msg="Replica count expectation met (desired:1, current:3, updated:1, ready:1, available:1)" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:44+08:00" level=info msg="Patched rollout: {\"spec\":{\"strategy\":{\"blueGreen\":{\"scaleDownDelayRevisionLimit\":1}}}}" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:45+08:00" level=info msg="Pod expectation 'revision:4 pod count == 1' met" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:45+08:00" level=info msg="Pod expectation 'revision:3 pod count == 1' met" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:45+08:00" level=info msg="Pod expectation 'revision:2 pod count == 0' met" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:45+08:00" level=info msg="Pod expectation 'revision:1 pod count == 0' met" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:45+08:00" level=info msg="Replica count expectation met (desired:1, current:2, updated:1, ready:1, available:1)" rollout=bluegreen-scaledowndelay
+time="2020-11-24T18:11:45+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenScaleDownDelay"
+=== RUN   TestFunctionalSuite/TestBlueGreenToCanary
+time="2020-11-24T18:11:45+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenToCanary"
+time="2020-11-24T18:11:45+08:00" level=info msg="service/bluegreen-to-canary created\n" rollout=bluegreen-to-canary
+time="2020-11-24T18:11:45+08:00" level=info msg="rollout.argoproj.io/bluegreen-to-canary created\n" rollout=bluegreen-to-canary
+time="2020-11-24T18:11:45+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen-to-canary
+time="2020-11-24T18:11:48+08:00" level=info msg="Condition 'status=Healthy' met after 2s" rollout=bluegreen-to-canary
+time="2020-11-24T18:11:48+08:00" level=info msg="Waiting for condition: status=Paused" rollout=bluegreen-to-canary
+time="2020-11-24T18:11:52+08:00" level=info msg="Condition 'status=Paused' met after 3s" rollout=bluegreen-to-canary
+time="2020-11-24T18:11:52+08:00" level=info msg="Replica count expectation met (desired:2, current:2, updated:1, ready:2, available:2)" rollout=bluegreen-to-canary
+time="2020-11-24T18:11:52+08:00" level=info msg="Expectation bluegreen-to-canary selector: map[app:bluegreen-to-canary] met" rollout=bluegreen-to-canary
+time="2020-11-24T18:11:52+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenToCanary"
+=== RUN   TestFunctionalSuite/TestBlueGreenUpdate
+time="2020-11-24T18:11:52+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenUpdate"
+time="2020-11-24T18:11:52+08:00" level=info msg="service/bluegreen created\n" rollout=bluegreen
+time="2020-11-24T18:11:52+08:00" level=info msg="rollout.argoproj.io/bluegreen created\n" rollout=bluegreen
+time="2020-11-24T18:11:52+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen
+time="2020-11-24T18:11:58+08:00" level=info msg="Condition 'status=Healthy' met after 5s" rollout=bluegreen
+time="2020-11-24T18:11:58+08:00" level=info msg="Replica count expectation met (desired:3, current:3, updated:3, ready:3, available:3)" rollout=bluegreen
+time="2020-11-24T18:11:58+08:00" level=info msg="Waiting for condition: status=Progressing" rollout=bluegreen
+time="2020-11-24T18:11:58+08:00" level=info msg="Condition 'status=Progressing' met after 0s" rollout=bluegreen
+time="2020-11-24T18:11:58+08:00" level=info msg="Waiting for condition: active revision=2" rollout=bluegreen
+time="2020-11-24T18:12:01+08:00" level=info msg="Condition 'active revision=2' met after 2s" rollout=bluegreen
+time="2020-11-24T18:12:01+08:00" level=info msg="Replica count expectation met (desired:3, current:6, updated:3, ready:3, available:3)" rollout=bluegreen
+time="2020-11-24T18:12:01+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bluegreen
+time="2020-11-24T18:12:01+08:00" level=info msg="Condition 'status=Healthy' met after 0s" rollout=bluegreen
+time="2020-11-24T18:12:01+08:00" level=info msg="Replica count expectation met (desired:3, current:6, updated:3, ready:3, available:3)" rollout=bluegreen
+time="2020-11-24T18:12:01+08:00" level=info msg="Deleting e2e-test-name=TestBlueGreenUpdate"
+=== RUN   TestFunctionalSuite/TestCanaryPromoteFull
+time="2020-11-24T18:12:02+08:00" level=info msg="Deleting e2e-test-name=TestCanaryPromoteFull"
+time="2020-11-24T18:12:02+08:00" level=info msg="rollout.argoproj.io/canary-promote-full created\n" rollout=canary-promote-full
+time="2020-11-24T18:12:02+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=canary-promote-full
+time="2020-11-24T18:12:11+08:00" level=info msg="Condition 'status=Healthy' met after 9s" rollout=canary-promote-full
+time="2020-11-24T18:12:11+08:00" level=info msg="Aborted rollout" rollout=canary-promote-full
+time="2020-11-24T18:12:12+08:00" level=info msg="Promoted rollout fully" rollout=canary-promote-full
+time="2020-11-24T18:12:12+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=canary-promote-full
+time="2020-11-24T18:12:18+08:00" level=info msg="Condition 'status=Healthy' met after 5s" rollout=canary-promote-full
+time="2020-11-24T18:12:18+08:00" level=info msg="AnalysisRun expectation 'analysisrun count == 0' met" rollout=canary-promote-full
+time="2020-11-24T18:12:18+08:00" level=info msg="Deleting e2e-test-name=TestCanaryPromoteFull"
+=== RUN   TestFunctionalSuite/TestContainerResourceFormats
+time="2020-11-24T18:12:18+08:00" level=info msg="Deleting e2e-test-name=TestContainerResourceFormats"
+time="2020-11-24T18:12:18+08:00" level=info msg="rollout.argoproj.io/container-resource-formats created\n" rollout=container-resource-formats
+time="2020-11-24T18:12:18+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=container-resource-formats
+time="2020-11-24T18:12:24+08:00" level=info msg="Condition 'status=Healthy' met after 6s" rollout=container-resource-formats
+time="2020-11-24T18:12:24+08:00" level=info msg="Pod expectation 'pod cpu preserved' met" rollout=container-resource-formats
+time="2020-11-24T18:12:24+08:00" level=info msg="Deleting e2e-test-name=TestContainerResourceFormats"
+=== RUN   TestFunctionalSuite/TestFixInvalidSpec
+time="2020-11-24T18:12:25+08:00" level=info msg="Deleting e2e-test-name=TestFixInvalidSpec"
+time="2020-11-24T18:12:25+08:00" level=info msg="rollout.argoproj.io/fix-invalid-spec created\n" rollout=fix-invalid-spec
+time="2020-11-24T18:12:25+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=fix-invalid-spec
+time="2020-11-24T18:12:25+08:00" level=info msg="Condition 'status=Degraded' met after 0s" rollout=fix-invalid-spec
+time="2020-11-24T18:12:25+08:00" level=info msg="rollout.argoproj.io/fix-invalid-spec unchanged\n" rollout=fix-invalid-spec
+time="2020-11-24T18:12:25+08:00" level=info msg="analysistemplate.argoproj.io/doesnt-exist-yet created\n" rollout=fix-invalid-spec
+time="2020-11-24T18:12:25+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=fix-invalid-spec
+time="2020-11-24T18:12:45+08:00" level=info msg="Condition 'status=Healthy' met after 19s" rollout=fix-invalid-spec
+time="2020-11-24T18:12:45+08:00" level=info msg="Deleting e2e-test-name=TestFixInvalidSpec"
+=== RUN   TestFunctionalSuite/TestMalformedRollout
+time="2020-11-24T18:12:45+08:00" level=info msg="Deleting e2e-test-name=TestMalformedRollout"
+W1124 18:12:45.732287   78311 reflector.go:424] pkg/mod/k8s.io/client-go@v0.19.4/tools/cache/reflector.go:156: watch of *v1alpha1.Rollout ended with: an error on the server ("unable to decode an event from the watch stream: unable to decode watch event: v1alpha1.Rollout.Spec: v1alpha1.RolloutSpec.Template: v1.PodTemplateSpec.Spec: v1.PodSpec.Containers: []v1.Container: v1.Container.Resources: v1.ResourceRequirements.Requests: unmarshalerDecoder: quantities must match the regular expression '^([+-]?[0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$', error found in #10 byte of ...|:\"invalid\"}}}]}}}}|..., bigger context ...|llout\",\"resources\":{\"requests\":{\"memory\":\"invalid\"}}}]}}}}|...") has prevented the request from succeeding
+time="2020-11-24T18:12:45+08:00" level=info msg="rollout.argoproj.io/malformed-rollout created\n" rollout=malformed-rollout
+time="2020-11-24T18:12:45+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=malformed-rollout
+time="2020-11-24T18:12:47+08:00" level=info msg="Condition 'status=Healthy' met after 1s" rollout=malformed-rollout
+time="2020-11-24T18:12:47+08:00" level=info msg="Deleting e2e-test-name=TestMalformedRollout"
+=== RUN   TestFunctionalSuite/TestRolloutAbortRetryPromote
+time="2020-11-24T18:12:47+08:00" level=info msg="Deleting e2e-test-name=TestRolloutAbortRetryPromote"
+time="2020-11-24T18:12:47+08:00" level=info msg="rollout.argoproj.io/basic created\n" rollout=basic
+time="2020-11-24T18:12:47+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=basic
+time="2020-11-24T18:12:49+08:00" level=info msg="Condition 'status=Healthy' met after 1s" rollout=basic
+time="2020-11-24T18:12:49+08:00" level=info msg="Waiting for condition: status=Paused" rollout=basic
+time="2020-11-24T18:12:51+08:00" level=info msg="Condition 'status=Paused' met after 2s" rollout=basic
+time="2020-11-24T18:12:51+08:00" level=info msg="Replicaset expectation 'two replicasets' met" rollout=basic
+time="2020-11-24T18:12:51+08:00" level=info msg="Aborted rollout" rollout=basic
+time="2020-11-24T18:12:51+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=basic
+time="2020-11-24T18:12:51+08:00" level=info msg="Condition 'status=Degraded' met after 0s" rollout=basic
+time="2020-11-24T18:12:51+08:00" level=info msg="Retried rollout" rollout=basic
+time="2020-11-24T18:12:51+08:00" level=info msg="Waiting for condition: status=Paused" rollout=basic
+time="2020-11-24T18:12:53+08:00" level=info msg="Condition 'status=Paused' met after 1s" rollout=basic
+time="2020-11-24T18:12:53+08:00" level=info msg="Promoted rollout" rollout=basic
+time="2020-11-24T18:12:53+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=basic
+time="2020-11-24T18:12:53+08:00" level=info msg="Condition 'status=Healthy' met after 0s" rollout=basic
+time="2020-11-24T18:12:53+08:00" level=info msg="Deleting e2e-test-name=TestRolloutAbortRetryPromote"
+=== RUN   TestFunctionalSuite/TestRolloutBadToBadUpdate
+time="2020-11-24T18:12:53+08:00" level=info msg="Deleting e2e-test-name=TestRolloutBadToBadUpdate"
+time="2020-11-24T18:12:53+08:00" level=info msg="rollout.argoproj.io/bad2bad created\n" rollout=bad2bad
+time="2020-11-24T18:12:53+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=bad2bad
+time="2020-11-24T18:13:05+08:00" level=info msg="Condition 'status=Degraded' met after 11s" rollout=bad2bad
+time="2020-11-24T18:13:05+08:00" level=info msg="Patched rollout: {\"spec\":{\"template\":{\"spec\":{\"containers\":[{\"command\":[\"/bad-command2\"],\"name\":\"bad2bad\"}]}}}}" rollout=bad2bad
+time="2020-11-24T18:13:05+08:00" level=info msg="Waiting for condition: status=Progressing" rollout=bad2bad
+time="2020-11-24T18:13:05+08:00" level=info msg="Condition 'status=Progressing' met after 0s" rollout=bad2bad
+time="2020-11-24T18:13:05+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=bad2bad
+time="2020-11-24T18:13:16+08:00" level=info msg="Condition 'status=Degraded' met after 10s" rollout=bad2bad
+time="2020-11-24T18:13:16+08:00" level=info msg="Pod expectation 'revision:2 pod count == 1' met" rollout=bad2bad
+time="2020-11-24T18:13:16+08:00" level=info msg="Pod expectation 'revision:1 pod count == 4' met" rollout=bad2bad
+time="2020-11-24T18:13:16+08:00" level=info msg="Deleting e2e-test-name=TestRolloutBadToBadUpdate"
+=== RUN   TestFunctionalSuite/TestRolloutBadToGoodSetWeightUpdate
+time="2020-11-24T18:13:16+08:00" level=info msg="Deleting e2e-test-name=TestRolloutBadToGoodSetWeightUpdate"
+time="2020-11-24T18:13:16+08:00" level=info msg="rollout.argoproj.io/bad2good-setweight created\n" rollout=bad2good-setweight
+time="2020-11-24T18:13:16+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=bad2good-setweight
+time="2020-11-24T18:13:27+08:00" level=info msg="Condition 'status=Degraded' met after 10s" rollout=bad2good-setweight
+time="2020-11-24T18:13:27+08:00" level=info msg="Patched rollout: {\"spec\":{\"template\":{\"spec\":{\"containers\":[{\"command\":null,\"name\":\"bad2good-setweight\"}]}}}}" rollout=bad2good-setweight
+time="2020-11-24T18:13:27+08:00" level=info msg="Waiting for condition: status=Progressing" rollout=bad2good-setweight
+time="2020-11-24T18:13:27+08:00" level=info msg="Condition 'status=Progressing' met after 0s" rollout=bad2good-setweight
+time="2020-11-24T18:13:27+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=bad2good-setweight
+time="2020-11-24T18:13:41+08:00" level=info msg="Condition 'status=Degraded' met after 13s" rollout=bad2good-setweight
+time="2020-11-24T18:13:41+08:00" level=info msg="Pod expectation 'canary pod count == 2' met" rollout=bad2good-setweight
+time="2020-11-24T18:13:41+08:00" level=info msg="Pod expectation 'stable pod count == 2' met" rollout=bad2good-setweight
+time="2020-11-24T18:13:41+08:00" level=info msg="Deleting e2e-test-name=TestRolloutBadToGoodSetWeightUpdate"
+=== RUN   TestFunctionalSuite/TestRolloutBadToGoodUpdate
+time="2020-11-24T18:13:41+08:00" level=info msg="Deleting e2e-test-name=TestRolloutBadToGoodUpdate"
+time="2020-11-24T18:13:41+08:00" level=info msg="rollout.argoproj.io/bad2good created\n" rollout=bad2good
+time="2020-11-24T18:13:41+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=bad2good
+time="2020-11-24T18:13:52+08:00" level=info msg="Condition 'status=Degraded' met after 10s" rollout=bad2good
+time="2020-11-24T18:13:52+08:00" level=info msg="Patched rollout: {\"spec\":{\"progressDeadlineSeconds\":60,\"template\":{\"spec\":{\"containers\":[{\"command\":null,\"name\":\"bad2good\"}]}}}}" rollout=bad2good
+time="2020-11-24T18:13:52+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=bad2good
+time="2020-11-24T18:14:00+08:00" level=info msg="Condition 'status=Healthy' met after 8s" rollout=bad2good
+time="2020-11-24T18:14:00+08:00" level=info msg="Pod expectation 'revision:2 pod count == 4' met" rollout=bad2good
+time="2020-11-24T18:14:00+08:00" level=info msg="Pod expectation 'revision:1 pod count == 0' met" rollout=bad2good
+time="2020-11-24T18:14:00+08:00" level=info msg="Deleting e2e-test-name=TestRolloutBadToGoodUpdate"
+=== RUN   TestFunctionalSuite/TestRolloutGoodToBadUpdate
+time="2020-11-24T18:14:00+08:00" level=info msg="Deleting e2e-test-name=TestRolloutGoodToBadUpdate"
+time="2020-11-24T18:14:00+08:00" level=info msg="rollout.argoproj.io/good2bad created\n" rollout=good2bad
+time="2020-11-24T18:14:00+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=good2bad
+time="2020-11-24T18:14:10+08:00" level=info msg="Condition 'status=Healthy' met after 9s" rollout=good2bad
+time="2020-11-24T18:14:10+08:00" level=info msg="Patched rollout: {\"spec\":{\"progressDeadlineSeconds\":10,\"template\":{\"spec\":{\"containers\":[{\"command\":[\"/bad-command\"],\"name\":\"good2bad\"}]}}}}" rollout=good2bad
+time="2020-11-24T18:14:10+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=good2bad
+time="2020-11-24T18:14:21+08:00" level=info msg="Condition 'status=Degraded' met after 10s" rollout=good2bad
+time="2020-11-24T18:14:21+08:00" level=info msg="Pod expectation 'canary pod count == 1' met" rollout=good2bad
+time="2020-11-24T18:14:21+08:00" level=info msg="Pod expectation 'stable pod count == 4' met" rollout=good2bad
+time="2020-11-24T18:14:21+08:00" level=info msg="Patched rollout: {\"spec\":{\"template\":{\"spec\":{\"containers\":[{\"command\":[\"/bad-command2\"],\"name\":\"good2bad\"}]}}}}" rollout=good2bad
+time="2020-11-24T18:14:21+08:00" level=info msg="Waiting for condition: status=Progressing" rollout=good2bad
+time="2020-11-24T18:14:21+08:00" level=info msg="Condition 'status=Progressing' met after 0s" rollout=good2bad
+time="2020-11-24T18:14:21+08:00" level=info msg="Waiting for condition: status=Degraded" rollout=good2bad
+time="2020-11-24T18:14:32+08:00" level=info msg="Condition 'status=Degraded' met after 10s" rollout=good2bad
+time="2020-11-24T18:14:32+08:00" level=info msg="Pod expectation 'revision:1 pod count == 4' met" rollout=good2bad
+time="2020-11-24T18:14:32+08:00" level=info msg="Pod expectation 'revision:2 pod count == 0' met" rollout=good2bad
+time="2020-11-24T18:14:32+08:00" level=info msg="Pod expectation 'revision:3 pod count == 1' met" rollout=good2bad
+time="2020-11-24T18:14:32+08:00" level=info msg="Deleting e2e-test-name=TestRolloutGoodToBadUpdate"
+=== RUN   TestFunctionalSuite/TestRolloutRestart
+time="2020-11-24T18:14:32+08:00" level=info msg="Deleting e2e-test-name=TestRolloutRestart"
+time="2020-11-24T18:14:32+08:00" level=info msg="rollout.argoproj.io/rollout-restart created\n" rollout=rollout-restart
+time="2020-11-24T18:14:32+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=rollout-restart
+time="2020-11-24T18:14:41+08:00" level=info msg="Condition 'status=Healthy' met after 9s" rollout=rollout-restart
+time="2020-11-24T18:14:41+08:00" level=info msg="Waiting for condition: status=Paused" rollout=rollout-restart
+time="2020-11-24T18:14:48+08:00" level=info msg="Condition 'status=Paused' met after 6s" rollout=rollout-restart
+time="2020-11-24T18:14:49+08:00" level=info msg="Restarted rollout" rollout=rollout-restart
+time="2020-11-24T18:14:51+08:00" level=info msg="Replica count expectation met (desired:4, current:4, updated:1, ready:1, available:1)" rollout=rollout-restart
+time="2020-11-24T18:14:51+08:00" level=info msg="Deleting e2e-test-name=TestRolloutRestart"
+=== RUN   TestFunctionalSuite/TestRolloutScalingWhenPaused
+time="2020-11-24T18:14:51+08:00" level=info msg="Deleting e2e-test-name=TestRolloutScalingWhenPaused"
+time="2020-11-24T18:14:51+08:00" level=info msg="rollout.argoproj.io/basic created\n" rollout=basic
+time="2020-11-24T18:14:51+08:00" level=info msg="Waiting for condition: status=Healthy" rollout=basic
+time="2020-11-24T18:14:53+08:00" level=info msg="Condition 'status=Healthy' met after 1s" rollout=basic
+time="2020-11-24T18:14:53+08:00" level=info msg="Waiting for condition: status=Paused" rollout=basic
+time="2020-11-24T18:14:55+08:00" level=info msg="Condition 'status=Paused' met after 2s" rollout=basic
+time="2020-11-24T18:14:55+08:00" level=info msg="Pod expectation 'canary pod count == 1' met" rollout=basic
+time="2020-11-24T18:14:55+08:00" level=info msg="Pod expectation 'stable pod count == 1' met" rollout=basic
+time="2020-11-24T18:14:56+08:00" level=info msg="Scaled rollout to 8" rollout=basic
+time="2020-11-24T18:14:56+08:00" level=info msg="Waiting for condition: status.availableReplicas=8" rollout=basic
+time="2020-11-24T18:15:05+08:00" level=info msg="Condition 'status.availableReplicas=8' met after 9s" rollout=basic
+time="2020-11-24T18:15:05+08:00" level=info msg="Pod expectation 'canary pod count == 2' met" rollout=basic
+time="2020-11-24T18:15:05+08:00" level=info msg="Pod expectation 'stable pod count == 6' met" rollout=basic
+time="2020-11-24T18:15:05+08:00" level=info msg="Scaled rollout to 4" rollout=basic
+time="2020-11-24T18:15:05+08:00" level=info msg="Waiting for condition: status.availableReplicas=4" rollout=basic
+time="2020-11-24T18:15:05+08:00" level=info msg="Condition 'status.availableReplicas=4' met after 0s" rollout=basic
+time="2020-11-24T18:15:05+08:00" level=info msg="Pod expectation 'canary pod count == 1' met" rollout=basic
+time="2020-11-24T18:15:05+08:00" level=info msg="Pod expectation 'stable pod count == 3' met" rollout=basic
+time="2020-11-24T18:15:05+08:00" level=info msg="Deleting e2e-test-name=TestRolloutScalingWhenPaused"
+time="2020-11-24T18:15:05+08:00" level=info msg="Deleting e2e-test-name"
+--- PASS: TestFunctionalSuite (237.74s)
+    --- PASS: TestFunctionalSuite/TestBlueGreenPreviewReplicaCount (8.71s)
+    --- PASS: TestFunctionalSuite/TestBlueGreenPromoteFull (11.21s)
+    --- PASS: TestFunctionalSuite/TestBlueGreenScaleDownDelay (17.64s)
+    --- PASS: TestFunctionalSuite/TestBlueGreenToCanary (6.98s)
+    --- PASS: TestFunctionalSuite/TestBlueGreenUpdate (9.50s)
+    --- PASS: TestFunctionalSuite/TestCanaryPromoteFull (16.44s)
+    --- PASS: TestFunctionalSuite/TestContainerResourceFormats (6.67s)
+    --- PASS: TestFunctionalSuite/TestFixInvalidSpec (20.41s)
+    --- PASS: TestFunctionalSuite/TestMalformedRollout (1.60s)
+    --- PASS: TestFunctionalSuite/TestRolloutAbortRetryPromote (6.48s)
+    --- PASS: TestFunctionalSuite/TestRolloutBadToBadUpdate (22.53s)
+    --- PASS: TestFunctionalSuite/TestRolloutBadToGoodSetWeightUpdate (25.00s)
+    --- PASS: TestFunctionalSuite/TestRolloutBadToGoodUpdate (19.30s)
+    --- PASS: TestFunctionalSuite/TestRolloutGoodToBadUpdate (31.70s)
+    --- PASS: TestFunctionalSuite/TestRolloutRestart (19.46s)
+    --- PASS: TestFunctionalSuite/TestRolloutScalingWhenPaused (13.80s)
+FAIL
+FAIL	github.com/argoproj/argo-rollouts/test/e2e	533.591s
+FAIL
